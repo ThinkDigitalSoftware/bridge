@@ -13,7 +13,6 @@ class Bridge {
   final registrar = Registrar();
   HttpServer _server;
   final _hasInit = Completer();
-  StreamSubscription _serverSubscription;
 
   Bridge({@required String address, @required int port}) {
     _init(address, port);
@@ -138,7 +137,6 @@ class Bridge {
 
     final response = await service.process(workOrder);
 
-    response['requestId'] = requestId;
     var returnValue = jsonEncode(response);
     return returnValue;
   }
@@ -158,4 +156,4 @@ class Bridge {
 enum RegistrationType { client, service }
 
 bool validateDataFormat(Map data) =>
-    data['service'] != null && data['function'] != null && data['data'] != null;
+    data['service'] != null && data['function'] != null;

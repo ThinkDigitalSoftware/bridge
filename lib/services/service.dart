@@ -21,4 +21,9 @@ abstract class Service {
     final response = functions[workOrder.function](workOrder.data);
     return response;
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'functions': functions.keys,
+      };
 }
